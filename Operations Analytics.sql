@@ -1,3 +1,6 @@
+-- the number of jobs reviewed per hour for each day in November 2020.
+
+
 SELECT
     STR_TO_DATE(ds, '%m/%d/%Y') AS Date,
     COUNT(job_id) AS jobs_reviewed,
@@ -8,7 +11,7 @@ WHERE STR_TO_DATE(ds, '%m/%d/%Y') BETWEEN '2020-11-01' AND '2020-11-30'
 GROUP BY Date
 ORDER BY Date;
 
-
+--  the 7-day rolling average of throughput
 
 SELECT
     date,
@@ -26,6 +29,8 @@ FROM (
     GROUP BY date
 ) AS subquery2
 ORDER BY date;
+
+-- calculate the percentage share of each language over the last 30 days.
 
 SELECT
     language,
